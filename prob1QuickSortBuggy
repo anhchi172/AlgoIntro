@@ -1,0 +1,39 @@
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+void findK(const vector <int>& a, int k) {
+    vector<int> a1;
+    vector<int> a2;
+    int x = round(rand % (int) (a.size() - 1));
+    if (k == x) {
+        cout<< a[x];
+        return;
+    }
+    else if (k > x) {  
+        for (int v = 0; v <= a.size() / 2 -1; v++) {
+            a1.push_back(a[v]);
+        }
+        findK(a1, k);
+    }
+    
+    else {     
+        for (int v = a.size() / 2 + 1; v <a.size(); v++) {
+            a2.push_back(a[v]);
+        }
+        findK(a2, k - a1.size() - 1);
+    }
+
+}
+
+
+int main()
+{
+    const vector <int> vec = { 4, 2, 5, 4, 2, 3, 5 };
+    int k = 3;
+    findK(vec, k);
+}
+
